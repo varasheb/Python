@@ -5,23 +5,23 @@
 # c. O/P -> Percentage of Head vs Tails
 import random
 
-def flipcoin():
+def flip_coin():
     return random.randint(0,1)
 
-def calculateHeadTailPercentage(totalflip):
-    if totalflip <= 0:
+def calculate_head_tail_percentage(total_flip):
+    if total_flip <= 0:
         return "Total flips should be a positive integer"
-    i=totalflip
-    headCount=0
-    tailCount=0
+    i=total_flip
+    head_count=0
+    tail_count=0
     while(i>0):
-        if(flipcoin()==0):
-            headCount+=1
+        if(flip_coin()==0):
+            head_count+=1
         else:
-            tailCount+=1
+            tail_count+=1
 
         i-=1
-    return {'head' :headCount/totalflip*100,'tail' :tailCount/totalflip*100}  
+    return {'head' :head_count/total_flip*100,'tail' :tail_count/total_flip*100}  
 
 
-print(calculateHeadTailPercentage(10))
+print(calculate_head_tail_percentage(10))
