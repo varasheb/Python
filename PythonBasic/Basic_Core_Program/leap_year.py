@@ -6,7 +6,7 @@ c. O/P -> Print the year is a Leap Year or not
 
 '''
 
-def findLeapYear(year):
+def find_leap_year(year):
     if(year>999 and year<10000):
        if (year%400==0 and year%100==0 or year%4==0 and year%100!=0):
            return True 
@@ -17,10 +17,10 @@ def findLeapYear(year):
 
 def main():
     year=input('Enter the year in format YYYY :=>')
-    isleap=findLeapYear(int(year))
-    if(isleap):
+    is_leap=find_leap_year(int(year))
+    if(is_leap):
         print("The Year : %s is a leap Year"%(year))
-    elif(isleap==None):
+    elif(is_leap==None):
         print('Not a valid input should be in format YYYY')
     else:
         print("Year : %s Not a leap year"%(year))
