@@ -56,8 +56,7 @@ if __name__ == '__main__':
     player, player1_positions, player2_positions, dice_rolls = game()
     print(f"Number of times dice was rolled for {player1} to win: {dice_rolls[1]}")
     print(f"Number of times dice was rolled for {player2} to win: {dice_rolls[2]}")
-    print(f"Position after every die roll for {player1}: {player1_positions}")
-    print(f"Position after every die roll for {player2}: {player2_positions}")
+   
     if player == 1:
         print(f"{player1} won the game!")
     else:
