@@ -14,20 +14,31 @@ class Employee:
     def calculate_wage(self, hours_worked):
         return self.wage_per_hour * hours_worked
 
-    def calculate_monthly_wage(self, working_days=20):
+    def calculate_monthly_wage(self, max_hours=100, max_days=20):
         total_wage = 0
-        for day in range(working_days):
+        total_hours = 0
+        total_days = 0
+        
+        while total_hours < max_hours and total_days < max_days:
             attendance = self.check_attendance()
             if attendance == 1:
+                total_hours += self.full_day_hours
                 total_wage += self.calculate_wage(self.full_day_hours)
+                total_days += 1
             elif attendance == 2:
+                total_hours += self.part_time_hours
                 total_wage += self.calculate_wage(self.part_time_hours)
-        return total_wage
+                total_days += 1
+            else:
+                total_days += 1  
 
+        return total_wage,total_days,total_hours
+    
 if __name__ == '__main__':
     print("Welcome to Employee Wage Computation Program")
 
     employee = Employee("Varshab Kanthi")
-    monthly_wage = employee.calculate_monthly_wage()
+    monthly_report = employee.calculate_monthly_wage()
 
-    print(f"Monthly wage of {employee.name} for 20 working days: Rs.{monthly_wage:.2f}")
+    print(f"Monthly wage of {employee.name} for {monthly_report[1]} working days with {monthly_report[2]} hours worked: Rs.{monthly_report[0]:.2f}")
+
