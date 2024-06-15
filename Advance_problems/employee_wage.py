@@ -14,19 +14,20 @@ class Employee:
     def calculate_wage(self, hours_worked):
         return self.wage_per_hour * hours_worked
 
+    def calculate_monthly_wage(self, working_days=20):
+        total_wage = 0
+        for day in range(working_days):
+            attendance = self.check_attendance()
+            if attendance == 1:
+                total_wage += self.calculate_wage(self.full_day_hours)
+            elif attendance == 2:
+                total_wage += self.calculate_wage(self.part_time_hours)
+        return total_wage
+
 if __name__ == '__main__':
     print("Welcome to Employee Wage Computation Program")
 
     employee = Employee("Varshab Kanthi")
-    attendance = employee.check_attendance()
+    monthly_wage = employee.calculate_monthly_wage()
 
-    if attendance == 1:
-        print(f"{employee.name} is present full-time.")
-        daily_wage = employee.calculate_wage(employee.full_day_hours)
-        print(f"Daily wage of {employee.name}: Rs.{daily_wage}")
-    elif attendance == 2:
-        print(f"{employee.name} is present part-time.")
-        daily_wage = employee.calculate_wage(employee.part_time_hours)
-        print(f"Daily wage of {employee.name}: Rs.{daily_wage}")
-    else:
-        print(f"{employee.name} is absent.")
+    print(f"Monthly wage of {employee.name} for 20 working days: Rs.{monthly_wage:.2f}")
